@@ -6,6 +6,7 @@
 */
 #ifndef PRINTF_H_
     #define PRINTF_H_
+    #include "my.h"
     #include <stdarg.h>
 
 int my_printf(const char *format, ...);

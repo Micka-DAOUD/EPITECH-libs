@@ -1,66 +1,49 @@
 ##
 ## EPITECH PROJECT, 2022
+## Created by Micka DAOUD & Adrien LACHAMBRE
+## File Description
 ## Makefile
-## File description:
-## Makefile to compile my project
 ##
 
-LIBS	=	lib/libprintf.a	\
-			lib/libmy.a
+NAME	=	BINARY_NAME
 
-LIBS_H	=	includes/my.h	\
-			includes/printf.h	\
+LIBS	=	lib/libprintf.a \
+		lib/libmy.a
 
-SRC	=	src/bsq.c \
-		src/find_square_max_size.c \
-		src/load_2d_arr_from_file.c \
-		src/fs_get_number_of_rows_cols.c \
-		src/errors.c \
-		src/main.c \
+LIBS_H	=	includes/my.h   \
+		includes/printf.h       \
+
+SRC	=	src/main.c      \
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	bsq
+CFLAGS	=	-Wall -Wextra -Werror -g3
 
-CFLAGS	=	-g2 -Wall -Werror -I includes
+all	:	$(NAME)
 
-all:	$(NAME)
+$(LIBS)	:
+	@make -C lib/printf/ all
+	@echo -n "\033[3;90m"
 
-$(NAME): $(LIBS) $(OBJ)
-	@make -C lib/my all
-	@gcc -g3 -o $(NAME) $(OBJ) $(CFLAGS) $(LIBS)
-	@echo -e "\e[1;32mCompilation done\e[0m"
+$(NAME)	:	$(LIBS) $(OBJ)
+	@gcc -o $(NAME) $(SRC) $(LIBS) $(CFLAGS)
+	@echo "\033[34mCompiling $(NAME)...\033[0m"
+	@echo "\033[32mDone :D\033[0m"
 
-$(LIBS):
-	@make -sC lib/my all
-	@make -sC lib/printf all
-
-tests_run:
-	gcc -o tests/unit_test tests/test_bsq.c ./src/*.c ./lib/my/my_getnbr.c \
-./lib/my/my_strlen.c --coverage -lcriterion
-	./tests/unit_test
-
-clean:
+clean   :
+	+@make -sC lib/my clean
+	+@make -sC lib/printf clean
 	@rm -f $(OBJ)
-	@rm -f *.gcda
-	@rm -f *.gcno
-	@rm -f "*~"
-	@rm -f "#*#"
+	@find -name "*~" -delete
+	@find -name "#*#" -delete
 
-fclean: clean
-	@rm -f $(LIBS)
-	@rm -f $(LIBS_H)
+fclean	:	clean
+	+@make -sC lib/my fclean
+	+@make -sC lib/printf fclean
 	@rm -f $(NAME)
 
-re:	fclean all
+re	:	fclean all
 
-htmlcover:
-	@echo "Creating the website ..."
-	@gcovr --exclude tests/ --html-details html/
-	@rm -f tests/*.gc*
-	@google-chrome ./html/coverage_details.html
-	@echo "Finished. You can see the result on the html page"
-
-abr:	fclean
+abr	:	fclean
 	clear
-	abricot --all --ignore
+	abricot --all

@@ -25,7 +25,7 @@ SRC	=	my_compute_power_rec.c		\
 		my_showmem.c			\
 		my_showstr.c			\
 		my_sort_int_array.c		\
-		my_sort_word_array.c	\
+		my_sort_word_array.c		\
 		my_str_isalpha.c		\
 		my_str_islower.c		\
 		my_str_isnum.c			\
@@ -43,22 +43,35 @@ SRC	=	my_compute_power_rec.c		\
 		my_strncmp.c			\
 		my_strncpy.c			\
 		my_strstr.c			\
-		my_strtab_len.c		\
+		my_strtab_len.c			\
 		my_strupcase.c			\
 		my_swap.c			\
 
-all	:	$(NAME)
+OBJ	=	$(SRC:.c=.o)
 
-$(NAME)	:
-		@cp $(NAME_H) ../../includes && echo "Copying $(NAME_H)..."
-		@echo "Compiling .o files..."
-		@gcc -c $(SRC) -I../../includes
-		@echo "Done ! :D"
-		@ar rc $(NAME) *.o && echo "Creating $(NAME) library..."
-		@mv $(NAME) ../
-		@make -s clean
-		@echo "Done ! ^o^"
+all	:	disp ../$(NAME) done
+
+../$(NAME)	:	$(OBJ)
+		@echo -n "\033[0m"
+		@cp $(NAME_H) ../../includes && echo "\033[33mIncluding $(NAME_H)...\033[0m"
+		@ar rc ../$(NAME) $(OBJ) && echo "\033[34mCompiling $(NAME)...\033[0m"
+
+disp	:
+	@echo "\033[1;36m--------------MAKE: LIBMY--------------\033[3;90m"
+
+done	:
+	@echo "\033[1;36m---------------------------------------"
+	@echo "\033[0;32mDone ^o^\033[0m"
 
 clean	:
-		@rm -f *.o && echo "Deleting .o files..."
-		@rm -f *.c~ && echo "Deleting temp files..."
+	@echo "\033[37mCleaning lib/my...\033[0m"
+	@rm -f $(OBJ)
+	@rm -f ../../includes/$(NAME_H)
+	@rm -f "*~"
+	@rm -f "#*#"
+
+fclean	:	clean
+	@echo "\033[31mDeleting ../$(NAME)...\033[0m"
+	@rm -f ../$(NAME)
+
+re	:	fclean all
