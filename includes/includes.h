@@ -1,14 +1,15 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2023
 ** Created by Micka DAOUD
-** File Description:
+** File description:
 ** includes.h
 */
 
 #ifndef INCLUDES_H_
     #define INCLUDES_H_
+    #include <stdlib.h>
     #include "my.h"
     #include "printf.h"
     #include "src.h"
 
-#endif /* INCLUDES_H */
+#endif /* INCLUDES_H_ */

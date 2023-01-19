@@ -52,26 +52,28 @@ OBJ	=	$(SRC:.c=.o)
 all	:	disp ../$(NAME) done
 
 ../$(NAME)	:	$(OBJ)
-		@echo -n "\033[0m"
-		@cp $(NAME_H) ../../includes && echo "\033[33mIncluding $(NAME_H)...\033[0m"
-		@ar rc ../$(NAME) $(OBJ) && echo "\033[34mCompiling $(NAME)...\033[0m"
+		@echo -ne "\033[0m"
+		@cp $(NAME_H) ../../includes
+		@echo -ne "\033[33mIncluding $(NAME_H)...\033[0m"
+		@ar rc ../$(NAME) $(OBJ)
+		@echo -ne "\033[34mCompiling $(NAME)...\033[0m"
 
 disp	:
-	@echo "\033[1;36m--------------MAKE: LIBMY--------------\033[3;90m"
+	@echo -ne"\033[1;36m--------------MAKE: LIBMY--------------\033[3;90m"
 
 done	:
-	@echo "\033[1;36m---------------------------------------"
-	@echo "\033[0;32mDone ^o^\033[0m"
+	@echo -ne "\033[1;36m---------------------------------------"
+	@echo -ne "\033[0;32mDone ^o^\033[0m"
 
 clean	:
-	@echo "\033[37mCleaning lib/my...\033[0m"
+	@echo -ne "\033[37mCleaning lib/my...\033[0m"
 	@rm -f $(OBJ)
 	@rm -f ../../includes/$(NAME_H)
-	@rm -f "*~"
-	@rm -f "#*#"
+	@find -name "*~" -delete
+	@find -name "#*#" -delete
 
 fclean	:	clean
-	@echo "\033[31mDeleting ../$(NAME)...\033[0m"
+	@echo -ne "\033[31mDeleting ../$(NAME)...\033[0m"
 	@rm -f ../$(NAME)
 
 re	:	fclean all

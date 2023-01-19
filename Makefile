@@ -1,7 +1,7 @@
 ##
-## EPITECH PROJECT, 2022
-## Created by Micka DAOUD & Adrien LACHAMBRE
-## File Description
+## EPITECH PROJECT, 2023
+## Created by Micka DAOUD
+## File description:
 ## Makefile
 ##
 
@@ -23,23 +23,23 @@ all	:	$(NAME)
 
 $(LIBS)	:
 	@make -C lib/printf/ all
-	@echo -n "\033[3;90m"
+	@echo -ne "\033[3;90m"
 
 $(NAME)	:	$(LIBS) $(OBJ)
 	@gcc -o $(NAME) $(SRC) $(LIBS) $(CFLAGS)
-	@echo "\033[34mCompiling $(NAME)...\033[0m"
-	@echo "\033[32mDone :D\033[0m"
+	@echo -e "\033[34mCompiling $(NAME)...\033[0m"
+	@echo -e "\033[32mDone :D\033[0m"
 
 clean   :
-	+@make -sC lib/my clean
-	+@make -sC lib/printf clean
+	@make -sC lib/my clean
+	@make -sC lib/printf clean
 	@rm -f $(OBJ)
 	@find -name "*~" -delete
 	@find -name "#*#" -delete
 
 fclean	:	clean
-	+@make -sC lib/my fclean
-	+@make -sC lib/printf fclean
+	@make -sC lib/my fclean
+	@make -sC lib/printf fclean
 	@rm -f $(NAME)
 
 re	:	fclean all

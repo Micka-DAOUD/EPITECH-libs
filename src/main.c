@@ -7,8 +7,9 @@
 
 #include "../includes/includes.h"
 
-int main(void)
+int main(int ac, char** av)
 {
-  my_printf("Hello world!\n");
-  return 0;
+    if (ac == 1)
+        my_printf("%s => Hello world!", av[0]);
+    return 0;
 }
