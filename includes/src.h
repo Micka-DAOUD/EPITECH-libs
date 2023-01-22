@@ -2,14 +2,14 @@
 ** EPITECH PROJECT, 2023
 ** Created by Micka DAOUD
 ** File description:
-** includes.h
+** src.h
 */
 
-#ifndef INCLUDES_H_
-    #define INCLUDES_H_
+#ifndef SRC_H_
+    #define SRC_H_
     #include "includes.h"
 
 //main.c
 int main(void);
 
-#endif /* INCLUDES_H */
+#endif /* SRC_H_ */

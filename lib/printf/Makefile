@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2022
 ## micka
 ## File description:
-## makefile
+## Makefile
 ##
 
 NAME	=	libprintf.a
