@@ -32,5 +32,6 @@ int df_s(va_list list);
 int df_di(va_list list);
 int df_p(va_list list);
 int df_bigr(va_list list);
+int df_t(va_list list);
 
 #endif /* PRINTF_H_ */

@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-NAME	=	BINARY_NAME
+NAME	=	LIBS_DEFAULT
 
 LIBS	=	lib/libprintf.a \
 		lib/libmy.a
@@ -17,7 +17,7 @@ SRC	=	src/main.c      \
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	=	-Wall -Wextra -Werror -g3
+CFLAGS	=	-Wextra -Werror -g3
 
 all	:	$(NAME)
 

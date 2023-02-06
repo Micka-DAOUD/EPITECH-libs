@@ -9,7 +9,5 @@
 
 int main(int ac, char** av)
 {
-    if (ac == 1)
-        my_printf("%s => Hello world!", av[0]);
-    return 0;
+    my_printf("Hello World!\n");
 }

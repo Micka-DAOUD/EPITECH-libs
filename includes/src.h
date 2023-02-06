@@ -10,6 +10,6 @@
     #include "includes.h"
 
 //main.c
-int main(void);
+int main(int ac, char** av);
 
 #endif /* SRC_H_ */

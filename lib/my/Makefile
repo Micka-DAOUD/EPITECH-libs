@@ -54,26 +54,26 @@ all	:	disp ../$(NAME) done
 ../$(NAME)	:	$(OBJ)
 		@echo -ne "\033[0m"
 		@cp $(NAME_H) ../../includes
-		@echo -ne "\033[33mIncluding $(NAME_H)...\033[0m"
+		@echo -e "\033[33mIncluding $(NAME_H)...\033[0m"
 		@ar rc ../$(NAME) $(OBJ)
-		@echo -ne "\033[34mCompiling $(NAME)...\033[0m"
+		@echo -e "\033[34mCompiling $(NAME)...\033[0m"
 
 disp	:
-	@echo -ne"\033[1;36m--------------MAKE: LIBMY--------------\033[3;90m"
+	@echo -e "\033[1;36m--------------MAKE: LIBMY--------------\033[3;90m"
 
 done	:
-	@echo -ne "\033[1;36m---------------------------------------"
-	@echo -ne "\033[0;32mDone ^o^\033[0m"
+	@echo -e "\033[1;36m---------------------------------------"
+	@echo -e "\033[0;32mDone ^o^\033[0m"
 
 clean	:
-	@echo -ne "\033[37mCleaning lib/my...\033[0m"
+	@echo -e "\033[37mCleaning lib/my...\033[0m"
 	@rm -f $(OBJ)
 	@rm -f ../../includes/$(NAME_H)
 	@find -name "*~" -delete
 	@find -name "#*#" -delete
 
 fclean	:	clean
-	@echo -ne "\033[31mDeleting ../$(NAME)...\033[0m"
+	@echo -e "\033[31mDeleting ../$(NAME)...\033[0m"
 	@rm -f ../$(NAME)
 
 re	:	fclean all

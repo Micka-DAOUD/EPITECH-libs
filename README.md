@@ -1,9 +1,16 @@
-# EPITECH-libs
+# my_navy
 
-This repository contains all the libs I will be lead to do during my years at __EPITECH__
+#### *EPITECH project by Micka DAOUD & Adrien LACHAMBRE*
 
-## Contains:
+## Project description:
 
-* **my:** tools reproducing basic C functions from several libs such as <string.h> or <stdio.h>
+The goal of the **my_navy** project is to create a battleship game in which two separated terminals communicate from one to another to exchange informations about the game such as the attack positions and if the attacks succeed or not.
 
-* **printf:** reproduces the main behaviours of the official printf function
+## Project instructions:
+
+You must code a terminal version of this game.
+The two players are ONLY allowed to comunicate using the signals *SIGUSER1* and *SIGUSER2*.
+
+The map size is 8x8. On each turn, you must display your positions, and then your enemy’s positions.
+
+At the end of the game (when all the ships of a player have been hit), you must display whether “I won” (and return 0) or “Enemy won” (and return 1).
