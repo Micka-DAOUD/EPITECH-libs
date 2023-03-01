@@ -7,24 +7,33 @@
 
 #include <stdlib.h>
 
-int count_cols(const char* str, int j, char sep)
+int is_sep(char c, char* seplist)
+{
+    for (int i = 0; seplist[i]; i++) {
+        if (seplist[i] == c)
+            return 1;
+    }
+    return 0;
+}
+
+int count_cols(const char* str, int j, char* seps)
 {
     int nb_cols = 0;
 
     for (; str[j]; j++){
-        if (str[j] == sep)
+        if (is_sep(str[j], seps))
             return nb_cols;
         nb_cols ++;
     }
     return nb_cols;
 }
 
-void put_letters(const char* str, char* word, int i, char sep)
+void put_letters(const char* str, char* word, int i, char* seps)
 {
     int j = 0;
 
     for (; str[i]; i++) {
-        if (str[i] != sep) {
+        if (!is_sep(str[i], seps)) {
             word[j] = str[i];
             j++;
         } else
@@ -32,21 +41,21 @@ void put_letters(const char* str, char* word, int i, char sep)
     }
 }
 
-int count_rows(char const* str, char sep)
+int count_rows(char const* str, char* seps)
 {
     int nb_rows = 0;
 
     for (int i = 1; str[i]; i++) {
-        if ((str[i] == sep && str[i - 1] != sep) ||
-            (!str[i + 1] && str[i] != sep))
+        if ((is_sep(str[i], seps) && !is_sep(str[i - 1], seps)) ||
+            (!str[i + 1] && !is_sep(str[i], seps)))
             nb_rows++;
     }
     return nb_rows;
 }
 
-char** my_str_to_word_array(char* str, char sep)
+char** my_str_to_word_array(char* str, char* seps)
 {
-    int nb_rows = count_rows(str, sep);
+    int nb_rows = count_rows(str, seps);
     int nb_cols;
     int temp_i;
     int j = 0;
@@ -54,13 +63,13 @@ char** my_str_to_word_array(char* str, char sep)
 
     arr[nb_rows] = NULL;
     for (int i = 0; str[i]; i++){
-        if ((str[i] == sep && str[i + 1] && str[i + 1] != sep) ||
-            (i == 0 && str[i] != sep)){
-            temp_i = (i == 0 && str[i] != sep) ? i : i + 1;
-            nb_cols = count_cols(str, temp_i, sep);
+        if ((is_sep(str[i], seps) && str[i + 1] && !is_sep(str[i + 1], seps)) ||
+            (i == 0 && !is_sep(str[i], seps))){
+            temp_i = (i == 0 && !is_sep(str[i], seps)) ? i : i + 1;
+            nb_cols = count_cols(str, temp_i, seps);
             arr[j] = malloc(sizeof(char) * (nb_cols + 1));
             arr[j][nb_cols] = '\0';
-            put_letters(str, arr[j], temp_i, sep);
+            put_letters(str, arr[j], temp_i, seps);
             j++;
         }
     }

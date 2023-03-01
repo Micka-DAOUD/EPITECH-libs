@@ -47,3 +47,10 @@ re	:	fclean all
 abr	:	fclean
 	clear
 	abricot --all
+
+style	:	fclean
+	@clear
+	@coding-style.sh . .
+	@clear
+	@cat coding-style-reports.log
+	@rm -rf coding-style-reports.log
