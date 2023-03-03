@@ -9,6 +9,9 @@
     #define ABS(value) ((value) < 0) ? - (value) : (value)
     #define SIGN(value) ((value) < 0) ? '-' : '+'
 
+void freearr(char** arr);
+int is_in(char c, char* str);
+char** my_arrdup(char** arr);
 long long my_compute_power_rec(int nb, int p);
 int my_compute_square_root(int nb);
 int my_find_prime_sup(int nb);
