@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2023
 ** Created by Micka DAOUD
 ** File description:
-** main.c
+** gets the absolute path of any epitech project
 */
 
 #include "../includes/includes.h"
@@ -10,4 +10,5 @@
 int main(int ac, char** av)
 {
     my_printf("Hello World!\n");
+    return 0;
 }
