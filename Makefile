@@ -27,7 +27,9 @@ $(LIBS)	:
 
 $(NAME)	:	$(LIBS) $(OBJ)
 	@echo -ne "\033[0m"
-	@figlet $(NAME)
+	@if env | grep LOGNAME | grep -q mdaoud; then \
+		figlet $(NAME); \
+	fi
 	@gcc -o $(NAME) $(SRC) $(LIBS) $(CFLAGS)
 	@echo -e "\033[34mCompiling $(NAME)...\033[0m"
 	@echo -e "\033[32mDone :D\033[0m"
