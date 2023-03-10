@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-NAME	=	LIBS_DEFAULT
+NAME	=	Template
 
 LIBS	=	lib/libprintf.a \
 		lib/libmy.a
@@ -22,10 +22,12 @@ CFLAGS	=	-Wextra -Werror -g3
 all	:	$(NAME)
 
 $(LIBS)	:
-	@make -C lib/printf/ all
+	@make -sC lib/printf/ all
 	@echo -ne "\033[3;90m"
 
 $(NAME)	:	$(LIBS) $(OBJ)
+	@echo -ne "\033[0m"
+	@figlet $(NAME)
 	@gcc -o $(NAME) $(SRC) $(LIBS) $(CFLAGS)
 	@echo -e "\033[34mCompiling $(NAME)...\033[0m"
 	@echo -e "\033[32mDone :D\033[0m"
@@ -41,6 +43,7 @@ fclean	:	clean
 	@make -sC lib/my fclean
 	@make -sC lib/printf fclean
 	@rm -f $(NAME)
+	@echo -e "\033[31mDeleting $(NAME)..."
 
 re	:	fclean all
 

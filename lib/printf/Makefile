@@ -41,7 +41,6 @@ $(NAME_H)	:
 ../$(NAME)	:	$(NAME_H) $(OBJ)
 	@echo -ne "\033[0m"
 	@cp $(NAME_H) ../../includes
-	@echo -e "\033[33mIncluding $(NAME_H)...\033[0m"
 	@ar rc ../$(NAME) $(OBJ)
 	@echo -e "\033[34mCompiling $(NAME)...\033[0m"
 
@@ -49,11 +48,10 @@ disp    :
 	@echo -e "\033[1;36m------------MAKE: LIBPRINTF------------\033[3;90m"
 
 done    :
-	@echo -e "\033[1;36m---------------------------------------\033[0m"
 	@echo -e "\033[0;32mDone \\(^O^)/\033[0m"
+	@echo -e "\033[1;36m---------------------------------------\033[0m"
 
 clean	:
-	@echo -e "\033[37mCleaning lib/printf...\033[0m"
 	@rm -f ../../includes/$(NAME_H)
 	@rm -f $(OBJ)
 	@find -name "*~" -delete
