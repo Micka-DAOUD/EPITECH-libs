@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** Created by Micka DAOUD
 ** File description:
-** gets the absolute path of any epitech project
+** main.c
 */
 
 #include "../includes/includes.h"
