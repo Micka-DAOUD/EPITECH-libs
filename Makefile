@@ -55,6 +55,7 @@ abr	:	fclean
 
 style	:	fclean
 	@clear
+	@echo -ne "\033[0m"
 	@coding-style . . | tail -n 1
 	@cat coding-style-reports.log
 	@rm -rf coding-style-reports.log
