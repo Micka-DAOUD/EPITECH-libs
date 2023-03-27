@@ -9,6 +9,5 @@
 
 int main(int ac, char** av)
 {
-    my_printf("Hello World!\n");
     return 0;
 }
