@@ -55,7 +55,6 @@ abr	:	fclean
 
 style	:	fclean
 	@clear
-	@coding-style.sh . .
-	@clear
+	@coding-style . . | tail -n 1
 	@cat coding-style-reports.log
 	@rm -rf coding-style-reports.log
