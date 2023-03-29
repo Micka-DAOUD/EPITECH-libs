@@ -5,8 +5,6 @@
 ** flags_bigr.c
 */
 
-#include <stdarg.h>
-#include <unistd.h>
 #include "printf.h"
 
 int df_bigr(va_list list)
@@ -24,8 +22,9 @@ int df_t(va_list list)
     char** arr = va_arg(list, char**);
 
     for (int i = 0; arr[i]; i++) {
-        my_putstr(arr[i]);
-        my_putchar('\n');
+        for (int j = 0; arr[i][j]; j++)
+            write(1, &arr[i][j], 1);
+        write(1, "\n", 1);
     }
     return my_arrlen(arr);
 }

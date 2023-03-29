@@ -5,7 +5,7 @@
 ** getnbr
 */
 
-int my_getnbr(char const *str)
+int my_atoi(char const *str)
 {
     int sign = 1;
     int res = 0;

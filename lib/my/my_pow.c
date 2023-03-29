@@ -5,7 +5,7 @@
 ** recursive factorial function
 */
 
-long long my_compute_power_rec(int nb, int p)
+long long my_pow(int nb, int p)
 {
     long long res;
 
@@ -15,6 +15,6 @@ long long my_compute_power_rec(int nb, int p)
     if (p < 0){
         return (0);
     }
-    res = nb * my_compute_power_rec(nb, p - 1);
+    res = nb * my_pow(nb, p - 1);
     return (res);
 }

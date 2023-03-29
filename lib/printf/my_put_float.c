@@ -5,12 +5,12 @@
 ** Illan MASTEY
 */
 
-#include "../../includes/my.h"
+#include "printf.h"
 
 int my_put_dec(double dec, int pre)
 {
     int res = 0;
-    long long pow = my_compute_power_rec(10, pre);
+    long long pow = my_pow(10, pre);
 
     dec = ABS(dec);
     dec -= (long long)dec;
@@ -31,6 +31,6 @@ int my_put_float(double nb, int pre)
 {
     int res = my_put_nbr(nb);
 
-    my_putchar('.');
+    write(1, ".", 1);
     return res + 1 + my_put_dec(nb, pre);
 }

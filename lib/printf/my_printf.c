@@ -5,23 +5,18 @@
 ** mini_printf.c
 */
 
-#include <stdarg.h>
 #include "printf.h"
-#include "my.h"
 
 int display(va_list list, char c)
 {
-    int (*tab[21])(va_list) = {
-
-            df_di, df_di, df_c, df_s, df_b, df_o, df_u,
-            df_x, df_bigx, df_e, df_bige, df_f, df_bigf,
-            df_g, df_bigg, df_a, df_biga, df_p, df_bigs, df_bigr, df_t
+    int (*tab[9])(va_list) = {
+                df_di, df_c, df_s, df_x, df_f, df_p, df_bigs, df_bigr, df_t
     };
-    char flags[] = "dicsbouxXeEfFgGaApSRt";
+    char flags[] = "dcsxfpSRt";
     if (c == 'n')
         return 0;
     if (c == '%') {
-        my_putchar(c);
+        write(1, &c, 1);
         return 1;
     }
     for (int i = 0; flags[i]; i++){
@@ -45,7 +40,7 @@ int my_printf(const char *format, ...)
             length += display(list, format[i + 1]);
             i++;
         } else {
-            my_putchar(format[i]);
+            write(1, &format[i], 1);
             length++;
         }
     }

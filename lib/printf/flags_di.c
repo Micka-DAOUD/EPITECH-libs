@@ -4,8 +4,7 @@
 ** File description:
 ** flags_di.c
 */
-#include "my.h"
-#include <stdarg.h>
+#include "printf.h"
 
 // %d, %i: displays a signed int
 int df_di(va_list list)

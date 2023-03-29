@@ -5,8 +5,7 @@
 ** my_put_unbr_base.c
 */
 
-#include <unistd.h>
-#include "my.h"
+#include "printf.h"
 
 int my_size_result(unsigned int nb, int nbase)
 {

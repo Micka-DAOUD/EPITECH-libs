@@ -4,8 +4,7 @@
 ** File description:
 ** flags_pn.c
 */
-#include <stdarg.h>
-#include "my.h"
+#include "printf.h"
 
 // %p: displays a pointer's address
 int my_res_size(unsigned long nbr)
@@ -33,8 +32,7 @@ int df_p(va_list list)
         nbr = (nbr - nbr % 16) / 16;
         i--;
     }
-    my_putchar('0');
-    my_putchar('x');
-    for (int i = 0; result[i]; i++) my_putchar(result[i]);
+    write(1, "0x", 2);
+    for (int i = 0; result[i]; i++) write(1, &result[i], 1);
     return res_size + 2;
 }

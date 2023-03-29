@@ -5,8 +5,7 @@
 ** flags_cs.c
 */
 
-#include <stdarg.h>
-#include <unistd.h>
+#include "printf.h"
 
 int df_c(va_list list)
 {

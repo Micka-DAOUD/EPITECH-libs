@@ -10,16 +10,17 @@
 int my_put_nbr(long long nb)
 {
     long long nb_chiffres = my_nbrlen(nb);
-    long long ord_gra = my_compute_power_rec(10, my_nbrlen(ABS(nb)) - 1);
+    long long ord_gra = my_pow(10, my_nbrlen(ABS(nb)) - 1);
     long long dernier_chiffre;
 
     if (nb < 0 && nb >= -9223372036854775807) {
-        my_putchar(45);
+        write(1, "-", 1);
         nb = ABS(nb);
     }
     while (ord_gra >= 1){
         dernier_chiffre = nb - (nb % ord_gra);
-        my_putchar(dernier_chiffre / ord_gra + '0');
+        char c = dernier_chiffre / ord_gra + '0';
+        write(1, &c, 1);
         nb %= ord_gra;
         ord_gra /= 10;
     }

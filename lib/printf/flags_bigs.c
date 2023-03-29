@@ -4,21 +4,20 @@
 ** File description:
 ** flags_bigs.c
 */
-#include "my.h"
-#include <stdarg.h>
+#include "printf.h"
 
 void display_oct(char esc_seq, char* base)
 {
     int n1 = esc_seq % 8;
 
-    my_putchar('\\');
+    write(1, "\\" , 1);
     esc_seq = (esc_seq - esc_seq % 8) / 8;
     int n2 = esc_seq % 8;
     esc_seq = (esc_seq - esc_seq % 8) / 8;
     int n3 = esc_seq % 8;
-    my_putchar(base[n3]);
-    my_putchar(base[n2]);
-    my_putchar(base[n1]);
+    write(1, &base[n3], 1);
+    write(1, &base[n2], 1);
+    write(1, &base[n1], 1);
 }
 
 int df_bigs(va_list list)
@@ -32,7 +31,7 @@ int df_bigs(va_list list)
             len += 3;
         }
         if (!(str[i] < 32 || str[i] >= 127))
-            my_putchar(str[i]);
+            write(1, &str[i], 1);
         len++;
     }
     return len;

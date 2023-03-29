@@ -10,20 +10,15 @@ NAME	=	libprintf.a
 LIBS	=	../libmy.a
 
 NAME_H	=	printf.h	\
-		my.h
 
 SRC	=	my_put_float.c		\
-		my_put_sci.c		\
 		my_put_uint_base.c	\
 		flags_2f.c		\
 		flags_di.c		\
-		flags_2g.c		\
 		flags_bigs.c		\
 		flags_bou2x.c		\
 		flags_cs.c		\
-		flags_2e.c		\
 		flags_p.c		\
-		flags_2a.c		\
 		flags_bigr.c		\
 		my_printf.c		\
 
@@ -35,10 +30,7 @@ $(LIBS)	:
 		@make -C ../my/ all
 		@echo -ne "\033[3;90m"
 
-$(NAME_H)	:
-		@cp ../my/my.h ./
-
-../$(NAME)	:	$(NAME_H) $(OBJ)
+../$(NAME)	:	$(OBJ)
 	@echo -ne "\033[0m"
 	@cp $(NAME_H) ../../includes
 	@ar rc ../$(NAME) $(OBJ)
