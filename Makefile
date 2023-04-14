@@ -27,7 +27,7 @@ $(LIBS)	:
 
 $(NAME)	:	$(LIBS) $(OBJ)
 	@echo -ne "\033[0m"
-	@if env | grep LOGNAME | grep -q mdaoud; then \
+	@if command -v figlet &> /dev/null; then \
 		figlet $(NAME); \
 	fi
 	@gcc -o $(NAME) $(SRC) $(LIBS) $(CFLAGS)
@@ -55,7 +55,13 @@ abr	:	fclean
 
 style	:	fclean
 	@clear
-	@echo -ne "\033[0m"
-	@coding-style . . | tail -n 1
+	@echo -e "\033[34mChecking coding style...\033[0m"
+	@coding-style . . | tail -n 1 > .cst
+	@if cat .cst | grep -q "0 coding style error(s)"; then	\
+  		echo -e "\033[32mCoding style OK\033[0m";			\
+	else													\
+		echo -ne "\033[31m"; cat .cst; echo -ne "\033[0m";	\
+	fi
+	@rm -f .cst
 	@cat coding-style-reports.log
 	@rm -rf coding-style-reports.log

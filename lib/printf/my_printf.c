@@ -10,7 +10,8 @@
 int display(va_list list, char c)
 {
     int (*tab[9])(va_list) = {
-                df_di, df_c, df_s, df_x, df_f, df_p, df_bigs, df_bigr, df_t
+
+        df_di, df_c, df_s, df_x, df_f, df_p, df_bigs, df_bigr, df_t
     };
     char flags[] = "dcsxfpSRt";
     if (c == 'n')

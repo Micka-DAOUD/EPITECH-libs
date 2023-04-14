@@ -22,7 +22,7 @@ SRC	=	freearr.c			\
 		my_strdup.c			\
 		my_strlen.c			\
 		my_strncmp.c			\
-		
+
 OBJ	=	$(SRC:.c=.o)
 
 all	:	disp ../$(NAME) done
